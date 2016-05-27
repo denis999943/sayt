@@ -13,47 +13,32 @@
           <div id="messages_product_view"></div>
           <!--Page Title-->
           <div class="page-title">
-            <h1>Авторизація</h1>
+            <h1>Замовлення товару</h1>
           </div>
-          		<!--Start of Contact Form-->
-              <div class="fieldset">
-              <h2 class="legend">Для входу до Вашого особистого кабінету введіть логін та пароль</h2>	
-			<?php
-			
-			$connect = mysql_connect('localhost','denis999943','denis1996') or die(mysql_error());
-			mysql_select_db('denis999943');
-			
-			if(isset($_POST['enter'])){
-			$e_login=$_POST['e_login'];
-			$e_password=($_POST['e_password']);
-			
-			$query=mysql_query("SELECT * FROM client WHERE login='$e_login'");
-			$client_data=mysql_fetch_array($query);
-			
-			if($client_data['password']==$e_password){
-			
-			echo "Ви ввійшли в свій обліковий запис ";
-					
-			}
-			else {
-			echo "Не вірний логін чи пароль ";
-			}
-			
-		}
-			
-			?>
-			
+          		<form>
+
+				<p><h2 class="classy">Ціна за одиницю</h2><br><input type="text" id="name9" required/></p>
+				<p><h2 class="classy">Кількість</h2><br><input type="text" id="name10" required/></p>
+
+
+<TITLE>Задача</TITLE>
+    <SCRIPT  LANGUAGE="JavaScript">
 	
-			<form action = "login.php" method="post">
-			<p><h2 class="classy">Логін</h2><br><input type="text" name="e_login" required/></p>
-			<p><h2 class="classy">Пароль</h2><br><input type="password" name="e_password" required/></p>
-			<input class="fancybox quickllook" type = "submit" name="enter" value="Ввійти">
-			</form>
-			<br> </br>
-		
-		<p align="centr"> <a href="http://localhost/checkin.php"><font size="3" color = "red">Якщо Ви ще не зареєстровані перейдіть на сторінку реєстрації</font></a></p></td> </tr>
-			
-          </form>
+	function totalPrice()
+	{
+	var cina = +document.getElementById('name9').value
+	var kol = +document.getElementById('name10').value
+	document.getElementById('result').value=cina*kol	
+	}
+	
+	 </SCRIPT>
+  <input class="fancybox quickllook" type=button  value="Розрахувати" onclick=totalPrice()>
+  <!--<br><input type=button value="Розрахувати" onclick=totalPrice()></br>-->
+  <p><h2 class="classy">До сплати</h2><br><input type="text" id="result" required/></p>
+  
+  <!--<br><label for = "result"><font size="5">До сплати </font></br>
+  <input type="text" id="result" size="6">-->
+</form>   
           <!--End of Contact Form-->  
         </div>
         <div class="col-left sidebar"> 
@@ -62,7 +47,6 @@
           
         </div>
       </div>
-	 </div>
       <div style="display: none;" id="back-top"> <a href="#"><img alt="" src="images/backtop.gif" /></a> </div>
     </div>
     <!--END OF MAIN CONTENT--> 
@@ -89,6 +73,8 @@
             </div>
           </form>
           <!--Newsletter--> 
-        <?php
+        
+        
+           <?php
 		include "nuz.php";
 	?>
